@@ -1,0 +1,146 @@
+html,
+body,
+#root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: ivory;
+}
+
+.label > div {
+  font-family: Helvetica, Arial;
+  position: absolute;
+  background: #e5f5ff88;
+  color: rgb(0, 0, 0);
+  padding: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: 30px;
+  user-select: none;
+  font-size: 2rem;
+}
+
+.webspace1 iframe {
+  width: 1920px;
+  height: 1080px;
+  border: none;
+  background: #000000;
+}
+
+/**
+ * Interface
+ */
+.interface {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  font-family: "Bebas Neue", cursive;
+}
+
+/**
+ * Controls
+ */
+.controls {
+  position: absolute;
+  bottom: 2%;
+  left: 0;
+  width: 100%;
+}
+
+.controls .raw {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.controls .move {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.controls .move .shift .shiftkey {
+  display: flex;
+  justify-content: center;
+  padding: 6px 0px;
+  width: 70px;
+  height: 18px;
+  border: 2px solid #ffffff;
+  background: #ffffff44;
+  border-radius: 6px;
+  opacity: 30%;
+  margin-top: 43px;
+}
+
+.controls .key {
+  opacity: 30%;
+  width: 18px;
+  height: 18px;
+  margin: 2px;
+  border: 2px solid #ffffff;
+  background: #ffffff44;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.controls .key.large {
+  width: 95px;
+}
+
+.controls .key.larger {
+  width: 200px;
+  margin-top: 10px;
+  padding: 2px 0;
+  border-radius: 6px;
+}
+
+.controls .key.active {
+  background: #ffffff99;
+}
+
+.delayed-fade-in {
+  opacity: 0;
+  animation: fadeIn 6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/**
+ * Time
+ */
+/* .time {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  width: 100%;
+  color: #ffffff;
+  font-size: 6vh;
+  background: #00000033;
+  padding-top: 5px;
+  text-align: center;
+} */
+
+/**
+ * Restart
+ */
+/* .start {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  color: #ffffff;
+  font-size: 80px;
+  background: #00000033;
+  padding-top: 10px;
+  pointer-events: auto;
+  cursor: pointer;
+} */

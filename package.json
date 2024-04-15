@@ -1,0 +1,35 @@
+{
+  "name": "threejs-journey-exercise",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.1",
+    "vite": "^4.5.0"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.15",
+    "@react-three/drei": "^9.88.7",
+    "@react-three/fiber": "^8.15.8",
+    "@react-three/postprocessing": "2.15",
+    "@react-three/rapier": "1.1",
+    "ecctrl": "^1.0.75",
+    "leva": "^0.9.35",
+    "r3f-perf": "7.1",
+    "react": "18.2",
+    "react-audio-player": "^0.17.0",
+    "react-dom": "18.2",
+    "react-use": "^17.5.0",
+    "standardized-audio-context": "^25.3.67",
+    "three": "^0.158.0",
+    "uuid": "^9.0.1",
+    "vite-plugin-glsl": "^1.1.2",
+    "zustand": "4.4"
+  }
+}
