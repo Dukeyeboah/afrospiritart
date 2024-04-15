@@ -17,7 +17,7 @@ const SunMaterial = shaderMaterial(
     uSmallWavesElevation: 0.15,
     uSmallWavesFrequency: 9.0,
     uSmallWavesSpeed: 0.2,
-    uSmallWavesIterations: 2.0,
+    uSmallWavesIterations: 1.0,
     //ColorStuff
     uDepthColor: new THREE.Color("#004f80"),
     uSurfaceColor: new THREE.Color("#6ac3fb"),

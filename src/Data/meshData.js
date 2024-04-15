@@ -4,7 +4,7 @@ import * as THREE from "three";
 export const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
 export const cylinderGeometry = new THREE.CylinderGeometry(1, 1, 1, 32);
 export const plane = new THREE.PlaneGeometry(1.78512, 1);
-export const sunGeometry = new THREE.SphereGeometry(2, 512, 512);
+export const sunGeometry = new THREE.SphereGeometry(2, 64, 64);
 
 //Materials
 export const newLandMaterial = new THREE.MeshBasicMaterial({
