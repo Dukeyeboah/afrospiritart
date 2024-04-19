@@ -1,0 +1,9 @@
+[
+    {
+      "origin": ["http://localhost:5173/", "afrospiritart-dev.vercel.app", "afrospiritart.com", "www.afrospiritart.com",
+      "afrospiritart.vercel.app"],
+      "responseHeader": ["Content-Type"],
+      "method": ["GET"],
+      "maxAgeSeconds": 3600
+    }
+  ]
