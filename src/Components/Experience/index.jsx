@@ -6,6 +6,7 @@ import {
   Environment,
   Lightformer,
   KeyboardControls,
+  //Sky,
   //OrbitControls,
 } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
@@ -81,7 +82,7 @@ const Experience = () => {
               capsuleRadius={1}
               capsuleHalfHeight={0.01}
             >
-              <Sun />
+            <Sun />
             </Ecctrl>
           </KeyboardControls>
           <Room />
