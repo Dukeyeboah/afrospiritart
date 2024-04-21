@@ -4,6 +4,7 @@ import * as THREE from "three";
 export const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
 export const cylinderGeometry = new THREE.CylinderGeometry(1, 1, 1, 32);
 export const plane = new THREE.PlaneGeometry(1.78512, 1);
+export const vertPlane = new THREE.PlaneGeometry(1, 1);
 export const sunGeometry = new THREE.SphereGeometry(2, 64, 64);
 
 //Materials
@@ -18,6 +19,8 @@ export const placeholderTextmaterial = new THREE.MeshBasicMaterial({
 export const road1Material = new THREE.MeshBasicMaterial({
   color: "palegreen",
 });
+
+
 export const pathColor = new THREE.Color(3, 1.4, 0.2);
 export const roadMaterial = new THREE.MeshBasicMaterial({ color: pathColor });
 export const obstacleMaterial = new THREE.MeshBasicMaterial({
@@ -34,4 +37,3 @@ export const glassMaterial = new THREE.MeshPhysicalMaterial({
   thickness: 0.1, // Adjust for material thickness
 });
 
-const vertPlane = new THREE.PlaneGeometry(1, 1);
