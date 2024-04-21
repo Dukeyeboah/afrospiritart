@@ -21,6 +21,8 @@ const Room = () => {
 
   const occludeArray = [roomRef, signpostBack];
 
+  
+
   return (
     <>
       {/* ROOM_ACTUAL MODEL */}

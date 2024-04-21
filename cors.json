@@ -5,7 +5,8 @@
       "afrospiritart-dev.vercel.app",
       "afrospiritart.com",
       "www.afrospiritart.com",
-      "afrospiritart.vercel.app"
+      "afrospiritart.vercel.app",
+      "http://localhost:5175/"
     ],
     "responseHeader": ["Content-Type"],
     "method": ["GET"],
