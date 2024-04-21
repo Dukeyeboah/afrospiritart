@@ -10,6 +10,7 @@ import {
   landscapeImageUrls,
 } from "../../FirebaseImageUpload/ImageService";
 import { getTokensByContract } from "../../services/contracts.service";
+import useAddressStore from "../store/contractStore";
 
 const plane = new THREE.PlaneGeometry(1.78512, 1);
 const vertPlane = new THREE.PlaneGeometry(1, 1);
@@ -17,11 +18,13 @@ const vertPlane = new THREE.PlaneGeometry(1, 1);
 const WallArt = () => {
   const [artworks, setArtworks] = useState([]);
   const textures = useTexture(artworks);
+  const address = useAddressStore((state) => state.address);
+
 
   useEffect(() => {
     const getNFTs = async () => {
       const { success, data } = await getTokensByContract(
-        "0xe785e82358879f061bc3dcac6f0444462d4b5330",
+        address ||  "0xe785e82358879f061bc3dcac6f0444462d4b5330",
         ""
       );
       if (success && data !== null) {
@@ -35,7 +38,7 @@ const WallArt = () => {
     return () => {
       setArtworks([]);
     };
-  }, []);
+  }, [address]);
 
   return (
     <>

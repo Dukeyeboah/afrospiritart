@@ -33,3 +33,5 @@ export const glassMaterial = new THREE.MeshPhysicalMaterial({
   ior: 1.5,
   thickness: 0.1, // Adjust for material thickness
 });
+
+const vertPlane = new THREE.PlaneGeometry(1, 1);

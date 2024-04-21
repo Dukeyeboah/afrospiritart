@@ -2,10 +2,12 @@ import React, { useCallback, useState } from 'react'
 import { Box, Fab } from "@mui/material";
 import RocketIcon from "@mui/icons-material/Rocket";
 import { validateEthereumAddress } from '../../utils/utils';
+import useAddressStore from '../store/contractStore';
 
 
 const Search = () => {
     const [addressInput, setAddressInput] = useState("");
+    const setAddress = useAddressStore((state) => state.setAddress);
 
     const checkAddress = (address) => {
         setAddressInput(address.trim());
@@ -18,6 +20,7 @@ const Search = () => {
           return;
         }
      console.log('address is:',addressInput);
+     setAddress(addressInput);
     }, [addressInput]);
     
   return (
@@ -30,18 +33,35 @@ const Search = () => {
               display:'flex',
               justifyContent:'center',
               '.box':{
-                background:'red',
+                padding:'2rem',
+                background:'#cecece',
+                borderRadius:'14px',
+                opacity: 0.5,
                 width:{
-                    md:'400px'
+                    md:'auto'
                 },
                 height:{
-                    md:'350px'
+                    md:'auto'
                 },
                 display:'flex',
                 flexDirection:'column',
-                justifyContent:'space-between',
-                alignItems:'center'
+                justifyContent:'center',
+                alignItems:'center',
+                gap:'20px',
+                '.addressInput':{
+                    borderRadius:'12px',
+                    height:'25px',
+                    padding:'5px 10px',
+                },
+                '.fetchBtn': {
 
+                  width: {
+                        md:'40px'
+                  },
+                  height: {
+                        md:'40px'
+                  }
+                }
               }
           }}
         >
