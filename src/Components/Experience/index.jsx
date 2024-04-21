@@ -1,4 +1,4 @@
-// import { Perf } from "r3f-perf";
+import { Perf } from "r3f-perf";
 import { useRef, useEffect, Suspense } from "react";
 import {
   Sparkles,
@@ -39,6 +39,7 @@ const Experience = () => {
   });
 
   useEffect(() => {
+  
     const unsubscribeReset = useMyGame.subscribe(
       (state) => state.phase,
       (phase) => {
@@ -60,7 +61,7 @@ const Experience = () => {
   return (
     <>
       <color args={["#030202"]} attach="background" />
-      {/* <Perf position="top-left" /> */}
+      <Perf position="top-left" />
       {/* <OrbitControls makeDefault /> */}
       <Environment preset="sunset" resolution={32}>
         <Lightformer

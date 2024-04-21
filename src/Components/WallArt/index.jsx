@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
-// import { landscapePhotos, verticalPhotos } from "../../Data/images";
 import {
   landscapePhotosPositions,
   verticalPhotosPositions,
@@ -10,15 +9,38 @@ import {
   imageUrls,
   landscapeImageUrls,
 } from "../../FirebaseImageUpload/ImageService";
+import { getTokensByContract } from "../../services/contracts.service";
 
 const plane = new THREE.PlaneGeometry(1.78512, 1);
 const vertPlane = new THREE.PlaneGeometry(1, 1);
 
 const WallArt = () => {
+  const [artworks, setArtworks] = useState([]);
+  const textures = useTexture(artworks);
+
+  useEffect(() => {
+    const getNFTs = async () => {
+      const { success, data } = await getTokensByContract(
+        "0xe785e82358879f061bc3dcac6f0444462d4b5330",
+        ""
+      );
+      if (success && data !== null) {
+        console.log(data.assets);
+        setArtworks(data.assets);
+      }
+    };
+
+    getNFTs();
+
+    return () => {
+      setArtworks([]);
+    };
+  }, []);
+
   return (
     <>
-      {/* // Vertical photos */}
-      {imageUrls.map((photo, index) => (
+      {/* Vertical photos */}
+      {artworks.map((_, index) => (
         <mesh
           key={index}
           geometry={vertPlane}
@@ -26,10 +48,10 @@ const WallArt = () => {
           position={verticalPhotosPositions[index].position}
           rotation={verticalPhotosPositions[index].rotation}
         >
-          <meshBasicMaterial map={useTexture(photo)} />
+          <meshBasicMaterial map={textures[index]} />
         </mesh>
       ))}
-      {/* // Landscape photos */}
+      {/* Landscape photos */}
       {landscapeImageUrls.map((photo, index) => (
         <mesh
           key={index}
@@ -46,27 +68,3 @@ const WallArt = () => {
 };
 
 export default WallArt;
-
-// {/* {landscapePhotos.map((photo, index) => (
-//         <mesh
-//           key={index}
-//           geometry={plane}
-//           scale={3}
-//           position={landscapePhotosPositions[index].position}
-//           rotation={landscapePhotosPositions[index].rotation}
-//         >
-//           <meshBasicMaterial map={useTexture(photo)} />
-//         </mesh>
-//       ))} */}
-
-//       {/* {verticalPhotos.map((photo, index) => (
-//         <mesh
-//           key={index}
-//           geometry={vertPlane}
-//           scale={3}
-//           position={verticalPhotosPositions[index].position}
-//           rotation={verticalPhotosPositions[index].rotation}
-//         >
-//           <meshBasicMaterial map={useTexture(photo)} />
-//         </mesh>
-//       ))} */}

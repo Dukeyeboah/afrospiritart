@@ -1,5 +1,5 @@
 import { useGLTF, useTexture, Html, Clone } from "@react-three/drei";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import WallArt from "../WallArt";
 import SocialProps from "../SocialProps";
 import { RigidBody } from "@react-three/rapier";
@@ -20,6 +20,7 @@ const Room = () => {
   bakedTexture.flipY = false;
 
   const occludeArray = [roomRef, signpostBack];
+
 
   return (
     <>

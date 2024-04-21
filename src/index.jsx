@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import Experience from "./Components/Experience/index.jsx";
 import { StrictMode } from "react";
 import Controlsinterface from "./ControlsInterface/ControlsInterface.jsx";
+import Search from "./Components/Search/index.jsx";
 // import { Leva } from "leva";
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
@@ -25,6 +26,7 @@ root.render(
         <Experience />
       </Canvas>
       <Controlsinterface />
+      <Search/> 
     </StrictMode>
   </>
 );

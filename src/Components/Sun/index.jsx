@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { shaderMaterial } from "@react-three/drei";
 import { useFrame, extend } from "@react-three/fiber";
@@ -47,6 +47,9 @@ const Sun = ({ ref }) => {
     ringVert.current.rotation.x = 0.2 * Math.cos(elapsedTime * 1.5);
   });
 
+  useEffect(()=> {
+    console.log('rendering');
+  },[])
   return (
     <>
       <mesh ref={sun} scale={[0.22, 0.22, 0.22]} geometry={sunGeometry}>
