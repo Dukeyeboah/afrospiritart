@@ -30,5 +30,5 @@ export const fetchLandscapeImageUrls = async () => {
   }
 };
 
-export const imageUrls = await fetchImageUrls();
-export const landscapeImageUrls = await fetchLandscapeImageUrls();
+// export const imageUrls = await fetchImageUrls();
+// export const landscapeImageUrls = await fetchLandscapeImageUrls();

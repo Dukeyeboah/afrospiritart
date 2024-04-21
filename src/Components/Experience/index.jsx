@@ -1,5 +1,5 @@
 // import { Perf } from "r3f-perf";
-import * as THREE from "three"
+import * as THREE from "three";
 import { useRef, useEffect, Suspense, useState } from "react";
 import {
   Sparkles,
@@ -23,14 +23,14 @@ import ModelRigidBodies from "../ModelRigidBodies";
 import useMyGame from "../../stores/useMyGame";
 import { keyboardMap } from "../../Data/positions";
 import {
-  imageUrls,
-  landscapeImageUrls,
+  //imageUrls,
+  //landscapeImageUrls,
+  fetchImageUrls,
+  fetchLandscapeImageUrls,
 } from "../../FirebaseImageUpload/ImageService";
 import { shuffleArray } from "../../Functions/shuffleArray";
 
-
 const Experience = () => {
-
   const randomColor = () => {
     const randomHslColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
     const color = new THREE.Color(randomHslColor);
@@ -70,6 +70,8 @@ const Experience = () => {
     //Fetching images from firebase storage
     const fetchUrls = async () => {
       try {
+        const imageUrls = await fetchImageUrls();
+        const landscapeImageUrls = await fetchLandscapeImageUrls();
         setArtworks(shuffleArray(imageUrls));
         setLandscapeArtworks(shuffleArray(landscapeImageUrls));
       } catch (error) {
@@ -77,7 +79,7 @@ const Experience = () => {
       }
     };
     fetchUrls();
-  
+
     // Cleanup function to unsubscribe
     return () => unsubscribeReset();
   }, []);
@@ -106,56 +108,56 @@ const Experience = () => {
       </Environment>
       <Physics debug={false}>
         <Suspense fallback={<Placeholder position-y={0.5} scale={[2, 3, 2]} />}>
-        {artworks.length > 0 && landscapeArtworks.length > 0 && (
-        <>
-          <KeyboardControls map={keyboardMap}>
-            <Ecctrl
-              ref={playerRef}
-              floatHeight={0.5}
-              maxVelLimit={5}
-              jumpVel={4}
-              capsuleRadius={1}
-              capsuleHalfHeight={0.01}
-            >
-              <Sun />
-            </Ecctrl>
-          </KeyboardControls>
-           {/* <WallArt /> */}
-          <WallArt
-            artworks={artworks}
-            landscapeArtworks={landscapeArtworks}
-            textures={textures}
-            landscapeTextures={landscapeTextures}
-          />
-          <Room />
-          <ModelRigidBodies />
-          <Road count={blocksCount} />
-          <Sparkles
-            size={9}
-            scale={[60, 8, 60]}
-            position-y={15}
-            speed={0.8}
-            count={100}
-            noise={[2, 4, 5]}
-            color={randomColor()}
-             // color={"#91deff"}
-          />
-          <Stars
-            radius={100}
-            depth={50}
-            count={5000}
-            factor={4}
-            saturation={0}
-            fade
-            speed={1}
-          />
-          <EffectComposer>
-            <Bloom mipmapBlur intensity={0.7} luminanceThreshold={1.1} />
-          </EffectComposer>
-          </>
-      )}
+          {artworks.length > 0 && landscapeArtworks.length > 0 && (
+            <>
+              <KeyboardControls map={keyboardMap}>
+                <Ecctrl
+                  ref={playerRef}
+                  floatHeight={0.5}
+                  maxVelLimit={5}
+                  jumpVel={4}
+                  capsuleRadius={1}
+                  capsuleHalfHeight={0.01}
+                >
+                  <Sun />
+                </Ecctrl>
+              </KeyboardControls>
+              {/* <WallArt /> */}
+              <WallArt
+                artworks={artworks}
+                landscapeArtworks={landscapeArtworks}
+                textures={textures}
+                landscapeTextures={landscapeTextures}
+              />
+              <Room />
+              <ModelRigidBodies />
+              <Road count={blocksCount} />
+              <Sparkles
+                size={9}
+                scale={[60, 8, 60]}
+                position-y={15}
+                speed={0.8}
+                count={100}
+                noise={[2, 4, 5]}
+                color={randomColor()}
+                // color={"#91deff"}
+              />
+              <Stars
+                radius={100}
+                depth={50}
+                count={5000}
+                factor={4}
+                saturation={0}
+                fade
+                speed={1}
+              />
+              <EffectComposer>
+                <Bloom mipmapBlur intensity={0.7} luminanceThreshold={1.1} />
+              </EffectComposer>
+            </>
+          )}
         </Suspense>
-      </Physics> 
+      </Physics>
     </>
   );
 };
