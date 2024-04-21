@@ -23,8 +23,6 @@ import ModelRigidBodies from "../ModelRigidBodies";
 import useMyGame from "../../stores/useMyGame";
 import { keyboardMap } from "../../Data/positions";
 import {
-  //imageUrls,
-  //landscapeImageUrls,
   fetchImageUrls,
   fetchLandscapeImageUrls,
 } from "../../FirebaseImageUpload/ImageService";
@@ -86,6 +84,7 @@ const Experience = () => {
 
   //reset ball position when it falls below space
   const reset = () => {
+
     playerRef.current.setTranslation({ x: 0, y: 1.2929608821868896, z: 0 });
     playerRef.current.setLinvel({ x: 0, y: 0, z: 0 });
     playerRef.current.setAngvel({ x: 0, y: 0, z: 0 });
