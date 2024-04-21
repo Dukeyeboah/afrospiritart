@@ -1,6 +1,5 @@
 import { useGLTF, useTexture, Html, Clone } from "@react-three/drei";
 import { useRef } from "react";
-import WallArt from "../WallArt";
 import SocialProps from "../SocialProps";
 import { RigidBody } from "@react-three/rapier";
 import Platforms from "../Platforms";
@@ -20,8 +19,6 @@ const Room = () => {
   bakedTexture.flipY = false;
 
   const occludeArray = [roomRef, signpostBack];
-
-  
 
   return (
     <>
@@ -43,7 +40,6 @@ const Room = () => {
         position={nodes.circleWindows.position}
         material={glassMaterial}
       />
-      <WallArt />
 
       {/* SIGNPOSTS */}
       <rectAreaLight

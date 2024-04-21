@@ -1,12 +1,13 @@
 // import { Perf } from "r3f-perf";
-import { useRef, useEffect, Suspense } from "react";
+import * as THREE from "three"
+import { useRef, useEffect, Suspense, useState } from "react";
 import {
   Sparkles,
   Stars,
   Environment,
   Lightformer,
   KeyboardControls,
-  //Sky,
+  useTexture,
   //OrbitControls,
 } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
@@ -15,13 +16,32 @@ import Ecctrl from "ecctrl";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import Sun from "../Sun";
 import Room from "../Room";
+import WallArt from "../WallArt";
 import { Road } from "../Road";
 import Placeholder from "../Placeholder";
 import ModelRigidBodies from "../ModelRigidBodies";
 import useMyGame from "../../stores/useMyGame";
 import { keyboardMap } from "../../Data/positions";
+import {
+  imageUrls,
+  landscapeImageUrls,
+} from "../../FirebaseImageUpload/ImageService";
+import { shuffleArray } from "../../Functions/shuffleArray";
+
 
 const Experience = () => {
+
+  const randomColor = () => {
+    const randomHslColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    const color = new THREE.Color(randomHslColor);
+    return color;
+  };
+  //State to hold artworks and textures fetched from firebase in the useEffects
+  const [artworks, setArtworks] = useState([]);
+  const [landscapeArtworks, setLandscapeArtworks] = useState([]);
+  const textures = useTexture(artworks);
+  const landscapeTextures = useTexture(landscapeArtworks);
+  //Number of road blocks
   const blocksCount = useMyGame((state) => {
     return state.blocksCount;
   });
@@ -42,13 +62,26 @@ const Experience = () => {
     const unsubscribeReset = useMyGame.subscribe(
       (state) => state.phase,
       (phase) => {
-        if (phase === "ready") reset();
+        if (phase === "ready") {
+          reset();
+        }
       }
     );
-    return () => {
-      unsubscribeReset();
+    //Fetching images from firebase storage
+    const fetchUrls = async () => {
+      try {
+        setArtworks(shuffleArray(imageUrls));
+        setLandscapeArtworks(shuffleArray(landscapeImageUrls));
+      } catch (error) {
+        console.error("Error fetching image URLs:", error);
+      }
     };
+    fetchUrls();
+  
+    // Cleanup function to unsubscribe
+    return () => unsubscribeReset();
   }, []);
+
   //reset ball position when it falls below space
   const reset = () => {
     playerRef.current.setTranslation({ x: 0, y: 1.2929608821868896, z: 0 });
@@ -73,6 +106,8 @@ const Experience = () => {
       </Environment>
       <Physics debug={false}>
         <Suspense fallback={<Placeholder position-y={0.5} scale={[2, 3, 2]} />}>
+        {artworks.length > 0 && landscapeArtworks.length > 0 && (
+        <>
           <KeyboardControls map={keyboardMap}>
             <Ecctrl
               ref={playerRef}
@@ -82,9 +117,16 @@ const Experience = () => {
               capsuleRadius={1}
               capsuleHalfHeight={0.01}
             >
-            <Sun />
+              <Sun />
             </Ecctrl>
           </KeyboardControls>
+           {/* <WallArt /> */}
+          <WallArt
+            artworks={artworks}
+            landscapeArtworks={landscapeArtworks}
+            textures={textures}
+            landscapeTextures={landscapeTextures}
+          />
           <Room />
           <ModelRigidBodies />
           <Road count={blocksCount} />
@@ -95,7 +137,8 @@ const Experience = () => {
             speed={0.8}
             count={100}
             noise={[2, 4, 5]}
-            color={"#91deff"}
+            color={randomColor()}
+             // color={"#91deff"}
           />
           <Stars
             radius={100}
@@ -109,8 +152,10 @@ const Experience = () => {
           <EffectComposer>
             <Bloom mipmapBlur intensity={0.7} luminanceThreshold={1.1} />
           </EffectComposer>
+          </>
+      )}
         </Suspense>
-      </Physics>
+      </Physics> 
     </>
   );
 };
