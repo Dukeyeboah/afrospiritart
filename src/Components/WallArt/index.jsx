@@ -16,7 +16,7 @@ const vertPlane = new THREE.PlaneGeometry(1, 1);
 const WallArt = () => {
   return (
     <>
-      {/* // Vertical photos */}
+      {/* // Vertical shaped photos */}
       {randomImageUrls.map((photo, index) => (
         <mesh
           key={index}
