@@ -8,7 +8,8 @@
       "https://afrospiritart.com/",
       "afrospiritart.vercel.app",
       "http://localhost:5175/",
-      "http://localhost:5173/"
+      "http://localhost:5173/",
+      "adinkra-one.vercel.app"
     ],
     "responseHeader": ["Content-Type"],
     "method": ["GET"],
