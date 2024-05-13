@@ -9,7 +9,10 @@
       "afrospiritart.vercel.app",
       "http://localhost:5175/",
       "http://localhost:5173/",
-      "adinkra-one.vercel.app"
+      "adinkra-one.vercel.app",
+      "somewhere.fun",
+      "https://somewherefun.vercel.app/",
+      "somewherefun.vercel.app/"
     ],
     "responseHeader": ["Content-Type"],
     "method": ["GET"],
