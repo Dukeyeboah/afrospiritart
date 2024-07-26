@@ -11,7 +11,7 @@ Responsive on desktop and mobile devices.
 
 
 
-# Getting Started with BasiCrypto
+# Getting Started with AfrospiritArt AdinkraRoom
 ```
 git clone
 cd afrospiritart
