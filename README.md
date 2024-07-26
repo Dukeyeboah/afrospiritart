@@ -6,9 +6,6 @@ Afrospiritart AdinkraRoom 3D Webspace Gallery.
 Responsive on desktop and mobile devices.
 
 
-![Preview]()
-
-
 ### Popular Contracts
 
 
